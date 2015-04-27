@@ -15,7 +15,7 @@ config = {
 	    database: {
             client: 'mysql',
             connection: {
-                host: process.env.GHOST_DB_HOST,
+                host: process.env.MYSQL_PORT_3306_TCP_ADDR, /*GHOST_DB_HOST,*/
                 user: 'root',
                 password: process.env.GHOST_DB_PASSWORD,
                 database: process.env.GHOST_DB_NAME,
@@ -78,7 +78,7 @@ config = {
 	    database: {
             client: 'mysql',
             connection: {
-                host: process.env.GHOST_DB_HOST,
+                host: process.env.MYSQL_PORT_3306_TCP_ADDR, /*GHOST_DB_HOST,*/
                 user: 'root',
                 password: process.env.GHOST_DB_PASSWORD,
                 database: process.env.GHOST_DB_NAME,
