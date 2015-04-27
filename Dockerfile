@@ -5,12 +5,9 @@ RUN groupadd user && useradd --create-home --home-dir /home/user -g user user
 RUN set -x \
 	&& apt-get update \
 	&& apt-get install -y --no-install-recommends curl ca-certificates \
-	&& apt-get install -y --no-install-recommends \
-       man \
-       strace \
-       emacs24-nox \
-       less \
 	&& rm -rf /var/lib/apt/lists/*
+
+# RUN apt-get install -y --no-install-recommends man strace less # emacs24-nox
 
 # grab gosu for easy step-down from root
 RUN gpg --keyserver pool.sks-keyservers.net --recv-keys B42F6819007F00F88E364FD4036A9C25BF357DD4
