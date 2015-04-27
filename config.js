@@ -23,6 +23,10 @@ config = {
             },
             debug: false
         },
+
+        paths: {
+            contentPath: path.join(process.env.GHOST_CONTENT, '/')
+        },
 	/*database: {
             client: 'sqlite3',
             connection: {
