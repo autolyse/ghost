@@ -18,7 +18,7 @@ config = {
                 host: process.env.GHOST_DB_HOST,
                 user: 'root',
                 password: process.env.GHOST_DB_PASSWORD,
-                database: 'ghost',
+                database: process.env.GHOST_DB_NAME,
                 charset: 'utf8'
             },
             debug: false
@@ -81,10 +81,13 @@ config = {
                 host: process.env.GHOST_DB_HOST,
                 user: 'root',
                 password: process.env.GHOST_DB_PASSWORD,
-                database: 'ghost',
+                database: process.env.GHOST_DB_NAME,
                 charset: 'utf8'
             },
             debug: true
+        },
+        paths: {
+            contentPath: path.join(process.env.GHOST_CONTENT, '/')
         },
         /*database: {
             client: 'sqlite3',
