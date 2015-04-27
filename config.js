@@ -40,7 +40,18 @@ config = {
             host: '0.0.0.0',
             // Port to be passed to node's `net.Server#listen()`, for iisnode set this to `process.env.PORT`
             port: '2368'
-        }
+        },
+
+        storage: {
+            active: 'ghost-s3',
+            'ghost-s3': {
+                accessKeyId: process.env.AWS_ACCESS_KEY_ID,
+                secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
+                bucket: process.env.AWS_BUCKET,
+                region: process.env.AWS_REGION,
+                assetHost: 'http://' + process.env.AWS_BUCKET + '.s3-eu-west-1.amazonaws.com/'
+            }
+        }    
     },
 
     // ### Development **(default)**
@@ -88,9 +99,16 @@ config = {
             // Port to be passed to node's `net.Server#listen()`, for iisnode set this to `process.env.PORT`
             port: '2368'
         },
-        paths: {
-            contentPath: path.join(process.env.GHOST_CONTENT, '/')
-        }
+        storage: {
+            active: 'ghost-s3',
+            'ghost-s3': {
+                accessKeyId: process.env.AWS_ACCESS_KEY_ID,
+                secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
+                bucket: process.env.AWS_BUCKET,
+                region: process.env.AWS_REGION,
+                assetHost: 'http://' + process.env.AWS_BUCKET + '.s3-eu-west-1.amazonaws.com/'
+            }
+        }    
     },
 
     // **Developers only need to edit below here**

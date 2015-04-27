@@ -5,6 +5,11 @@ RUN groupadd user && useradd --create-home --home-dir /home/user -g user user
 RUN set -x \
 	&& apt-get update \
 	&& apt-get install -y --no-install-recommends curl ca-certificates \
+	&& apt-get install -y --no-install-recommends \
+       man \
+       strace \
+       emacs24-nox \
+       less \
 	&& rm -rf /var/lib/apt/lists/*
 
 # grab gosu for easy step-down from root
@@ -46,6 +51,10 @@ VOLUME $GHOST_CONTENT
 RUN rm -v /usr/src/ghost/config.example.js
 # Copy a configuration file from the current directory
 ADD config.js /usr/src/ghost/config.example.js
+
+# S3 storage
+RUN cd / && npm install --save ghost-s3-storage
+ADD ghost-s3 /usr/src/ghost/content/storage/ghost-s3
 
 COPY docker-entrypoint.sh /entrypoint.sh
 ENTRYPOINT ["/entrypoint.sh"]
