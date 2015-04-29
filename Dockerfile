@@ -40,6 +40,8 @@ RUN buildDeps=' \
 	&& npm cache clean \
 	&& rm -rf /tmp/npm*
 
+ADD robots.txt $GHOST_SOURCE/content/themes/casper
+
 ENV GHOST_CONTENT /var/lib/ghost
 RUN mkdir -p "$GHOST_CONTENT" && chown -R user:user "$GHOST_CONTENT"
 VOLUME $GHOST_CONTENT
@@ -47,7 +49,7 @@ VOLUME $GHOST_CONTENT
 # Remove the default Ghost configuration file
 RUN rm -v /usr/src/ghost/config.example.js
 # Copy a configuration file from the current directory
-ADD config.js /usr/src/ghost/config.example.js
+ADD config.js $GHOST_SOURCE/config.example.js
 
 # S3 storage
 RUN cd / && npm install --save ghost-s3-storage
