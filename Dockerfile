@@ -40,7 +40,7 @@ RUN buildDeps=' \
 	&& npm cache clean \
 	&& rm -rf /tmp/npm*
 
-ADD robots.txt $GHOST_SOURCE/content/themes/casper
+ADD robots.txt $GHOST_SOURCE/content/themes/casper/
 
 ENV GHOST_CONTENT /var/lib/ghost
 RUN mkdir -p "$GHOST_CONTENT" && chown -R user:user "$GHOST_CONTENT"
